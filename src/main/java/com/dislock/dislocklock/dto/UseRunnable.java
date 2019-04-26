@@ -1,5 +1,10 @@
 package com.dislock.dislocklock.dto;
 
+import com.service.JdkLock;
+
+
+import javax.annotation.Resource;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -11,45 +16,19 @@ import java.util.concurrent.locks.Lock;
 public class UseRunnable implements Runnable {
     private static int tickCnt = 100;
 
-    //@Resource(name = "JdkLock")
-    private Lock lock = new Lock() {
-        @Override
-        public void lock() {
+    private Lock lock;
 
-        }
-
-        @Override
-        public void lockInterruptibly() throws InterruptedException {
-
-        }
-
-        @Override
-        public boolean tryLock() {
-            return false;
-        }
-
-        @Override
-        public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
-            return false;
-        }
-
-        @Override
-        public void unlock() {
-
-        }
-
-        @Override
-        public Condition newCondition() {
-            return null;
-        }
-    };
+    /*构造函数*/
+    public UseRunnable(Lock lock){
+        this.lock = lock;
+    }
 
     @Override
     public void run() {
         while (tickCnt>0){
             lock.lock();
             try {
-                System.out.println(Thread.currentThread().getName()+"售出："+tickCnt--);
+                System.out.println(Thread.currentThread().getName()+"售出：    "+tickCnt--);
 
             }catch (Exception e){
                 e.printStackTrace();

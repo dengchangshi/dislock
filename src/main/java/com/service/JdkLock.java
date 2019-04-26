@@ -8,20 +8,18 @@ import java.util.concurrent.locks.Lock;
 
 /**
  * @Author: dengcs
- * @Date: 2019/4/25 18:18
- * 注释 Mysql实现布式锁, 可靠，并发量300-700左右(根据机器盘和固态盘决定)
+ * @Date: 2019/4/26 14:44
  */
-
 @Service
-public class MysqlLock implements Lock {
+public class JdkLock implements Lock {
     @Override
     public void lock() {
-        return;
+
     }
 
     @Override
     public void lockInterruptibly() throws InterruptedException {
-        return;
+
     }
 
     @Override
@@ -36,7 +34,7 @@ public class MysqlLock implements Lock {
 
     @Override
     public void unlock() {
-        return;
+
     }
 
     @Override
