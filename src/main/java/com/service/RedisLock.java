@@ -11,7 +11,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 import redis.clients.jedis.ScanParams;
-import redis.clients.jedis.set.SetParams;
+//import redis.clients.jedis.set.SetParams;
 
 /**
  * @Author: dengcs
@@ -31,13 +31,15 @@ public class RedisLock implements Lock {
 
     //lockKey 键值，uniqueValue 唯一值，seconds 失效时间
     public boolean lock(String lockKey, String uniqueValue, int seconds){
-        //jedis = jedisPoll.getResource();
+/*
+        jedis = jedisPoll.getResource();
         SetParams params = new SetParams();
         params.nx().ex(seconds);
         String result = jedis.set(lockKey, uniqueValue, params);
         if ("OK".equals(result)) {
             return true;
         }
+        */
         return false;
     }
 
